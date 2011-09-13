@@ -1,0 +1,23 @@
+<p>Welcome, {{ user }}!</p>
+
+<p>Your Friends</p>
+{% if friend_list %}
+    <ul>
+    {% for friend in friend_list %}
+        <li><a href="/lendinglib/friend_profile/{{ friend.user.pk }}/">{{ friend }}<a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No friends yet.</p>
+{% endif %}
+
+<p>Your Files</p>
+{% if file_list %}
+    <ul>
+    {% for file in file_list %}
+        <li> {{ file }}</li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No files yet.</p>
+{% endif %}
