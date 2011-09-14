@@ -4,7 +4,7 @@
 {% if friend_list %}
     <ul>
     {% for friend in friend_list %}
-        <li><a href="/lendinglib/friend_profile/{{ friend.user.pk }}/">{{ friend }}<a></li>
+        <li><a href="/lendinglib/friend_profile/{{ friend.user.pk }}/">{{ friend }}</a></li>
     {% endfor %}
     </ul>
 {% else %}
@@ -15,7 +15,7 @@
 {% if file_list %}
     <ul>
     {% for file in file_list %}
-        <li> {{ file }}</li>
+        <li><a href="/lendinglib/file_detail/{{ file.pk }}/">{{ file }}</a></li>
     {% endfor %}
     </ul>
 {% else %}

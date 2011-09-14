@@ -37,6 +37,7 @@ def file_detail(request, file_id):
     file = FileObject.objects.get(pk=file_id)
     title = file.title
     artist = file.artist
+    owner = file.owner
     return render_to_response('lendinglib/file_detail.html', 
-        {'file': file, 'title': title, 'artist': artist})       
+        {'file': file, 'title': title, 'artist': artist, 'owner': owner})       
     
