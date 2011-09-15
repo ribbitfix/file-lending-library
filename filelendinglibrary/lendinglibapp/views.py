@@ -1,5 +1,5 @@
 from django.http import HttpResponse
-from django.shortcuts import render_to_response
+from django.shortcuts import render_to_response, get_object_or_404
 from lendinglibapp.models import UserProfile, FileObject
 from lib.decorators import template
 #from profiles.tools import get_profile
@@ -34,7 +34,7 @@ def basic_profile(request, username):
     
 def file_detail(request, file_id):
     '''provides info about and checkout option for a file'''
-    file = FileObject.objects.get(pk=file_id)
+    file = get_object_or_404(FileObject, pk=file_id)
     title = file.title
     artist = file.artist
     owner = file.owner
