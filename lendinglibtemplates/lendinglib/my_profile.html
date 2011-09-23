@@ -21,3 +21,10 @@
 {% else %}
     <p>No files yet.</p>
 {% endif %}
+
+<p>Update your email address</p>
+<form action="update/" method="post">
+{% csrf_token %}
+<input type="text" name="new_email"/>
+<input type="submit" value="submit"/>
+</form>
