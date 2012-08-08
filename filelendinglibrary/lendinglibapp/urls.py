@@ -7,7 +7,6 @@ admin.autodiscover()
 urlpatterns = patterns('lendinglibapp.views',
     url(r'^$', 'index'),
     url(r'^my_profile/(?P<user_id>\d+)/$', 'my_profile', name='my_profile'),
-    url(r'^my_profile/(?P<user_id>\d+)/update/$', 'update'),
     url(r'^friend_profile/(?P<user_id>\d+)/$', 'friend_profile'),
     url(r'^basic_profile/$', 'basic_profile'),
     url(r'^file_detail/(?P<file_id>\d+)/$', 'file_detail'),

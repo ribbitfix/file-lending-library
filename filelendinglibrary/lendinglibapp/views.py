@@ -2,6 +2,7 @@ from django.core.urlresolvers import reverse
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render_to_response, get_object_or_404
 from django.template import RequestContext
+from forms import UserEmailForm
 from lendinglibapp.models import UserProfile, FileObject
 from lib.decorators import template
 #from profiles.tools import get_profile
@@ -21,9 +22,17 @@ def index(request):
 def my_profile(request, user_id):
     '''user can view and change their profile details, friends, and files'''
     user, friend_list, file_list = get_profile_details(user_id)
-    return render_to_response('lendinglib/my_profile.html', {'user': user,
-        'friend_list': friend_list, 'file_list': file_list},
-        context_instance=RequestContext(request))
+    form = UserEmailForm()
+    
+    if request.method == 'POST':
+        form = UserEmailForm(request.POST)
+        if form.is_valid():
+            form.save(request.user)
+        else:
+            print form.errors
+            
+    return render_to_response('lendinglib/my_profile.html', 
+        {'user': user, 'friend_list': friend_list, 'file_list': file_list, 'form': form}, context_instance=RequestContext(request))
 
 def friend_profile(request, user_id):
     '''private profile, available to friends only'''
@@ -43,13 +52,5 @@ def file_detail(request, file_id):
     owner = file.owner
     return render_to_response('lendinglib/file_detail.html', 
         {'file': file, 'title': title, 'artist': artist, 'owner': owner})
-        
-def update(request, user_id):
-    '''processes data from my_profile update email form'''
-    user = get_object_or_404(UserProfile, pk=user_id)
-    user.user.email = request.POST['new_email']
-    user.save()
-    return HttpResponseRedirect(reverse('my_profile',
-        args=[user.pk]))
     
     

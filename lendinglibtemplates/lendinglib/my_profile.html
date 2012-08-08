@@ -23,8 +23,8 @@
 {% endif %}
 
 <p>Update your email address</p>
-<form action="update/" method="post">
+<form action="{% url my_profile user.user.id %}" method="post">
 {% csrf_token %}
-<input type="text" name="new_email"/>
+{{ form.as_p }}
 <input type="submit" value="submit"/>
 </form>
