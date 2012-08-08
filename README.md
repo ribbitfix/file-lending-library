@@ -17,6 +17,7 @@ Learned about how to do profile models here:
 - https://docs.djangoproject.com/en/1.3/topics/auth/#storing-additional-information-about-users
 - http://www.djangobook.com/en/1.0/chapter12/#cn222
 - http://www.turnkeylinux.org/blog/django-profile
+
 DB migrations: When you add new fields to a table that already has data in it - allows you to update the table without losing data. Can't be performed by Django, but there's an app for it called South.
 
 NEXT: https://docs.djangoproject.com/en/1.3/intro/tutorial01/#database-setup
@@ -30,6 +31,7 @@ So I need to make three models:
 - User: basic stuff like name, email, password
 - UserProfile: app-specific stuff, i.e. friend relationships (assume symmetry?). This table will have a many-to-many relationship with itself.
 - File: foreign key (to User, or UserProfile?), title, artist, is_available
+
 NEXT: https://docs.djangoproject.com/en/1.3/intro/tutorial01/#activating-models
 
 ### 9/6
@@ -76,9 +78,7 @@ So I need to make these views:
 ### 9/9
 There's a template decorator function to return just data instead of using Django's render_to_response() boilerplate. Jeff says to ask about this once I'm comfortable with the latter.
 
-NEXT: https://docs.djangoproject.com/en/1.3/intro/tutorial03/#write-views-that-actually-do-something
-
-Spend some more time with this stuff.
+NEXT: https://docs.djangoproject.com/en/1.3/intro/tutorial03/#write-views-that-actually-do-something - spend some more time with this stuff.
 
 ### 9/12
 QUESTION: How to eliminate redundancy b/t my_profile and friend_profile views?
